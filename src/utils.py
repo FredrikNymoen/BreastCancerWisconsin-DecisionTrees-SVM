@@ -39,13 +39,5 @@ def evaluate_svm(model, X, y, cv, label, color):
     mean_auc, std_auc = auc(mean_fpr, mean_tpr), np.std(aucs)
     mean_acc, std_acc = np.mean(accuracies), np.std(accuracies)
 
-    ax.plot(mean_fpr, mean_tpr, color=color,
-            label=f"Mean ROC (AUC = {mean_auc:.3f} ± {std_auc:.3f})", lw=2)
-    ax.plot([0, 1], [0, 1], linestyle="--", color="gray", lw=1)
-    ax.set(xlabel="False Positive Rate", ylabel="True Positive Rate",
-           title=f"ROC Curve - {label}")
-    ax.legend()
-    plt.tight_layout()
-
     return fig, mean_auc, std_auc, mean_acc, std_acc
 
